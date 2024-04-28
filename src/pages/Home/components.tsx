@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import px2vw from "../../utils/px2vw";
+
 function TopBar({ ...props }) {
   return (
     <>
@@ -34,6 +36,19 @@ function Divider() {
     </>
   );
 }
+
+function Certifications() {
+  return (
+    <>
+      <CertificationStyled>
+        <h1>Master Techinical 2023</h1>
+      </CertificationStyled>
+    </>
+  );
+}
+
+const CertificationStyled = styled.div``;
+
 const DividerStyled = styled.div`
   background-color: #ffc86b;
   height: 5px;
@@ -44,24 +59,29 @@ const PhotoContainerStyled = styled.div`
   display: flex;
   align-items: center;
   color: white;
-
+  font-size: 0.8rem;
   h2 {
     color: #ffc86b;
   }
   justify-content: space-around;
   img {
     border-radius: 40%;
-    height: 800px;
+    height: ${px2vw(600)};
+  }
+
+  @media (max-width: 720px) {
+    font-size: 0.8rem;
+    flex-direction: column;
   }
 `;
 const Topbarstyled = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100vh;
+  width: 100%;
   color: white;
-  font-size: 30px;
+  font-size: 1.9rem;
   font-weight: 900;
 `;
 
-export { TopBar, PhotoContainer, Divider };
+export { TopBar, PhotoContainer, Divider, Certifications };

@@ -5,7 +5,8 @@ import NodeLogo from "../../img/nodejs.png";
 import ReactLogo from "../../img/reactjs.png";
 import DockerLogo from "../../img/docker.png";
 import SkillCard from "../../components/SkillCard";
-import { TopBar, PhotoContainer, Divider } from "./components";
+import px2vw from "../../utils/px2vw";
+import { TopBar, PhotoContainer, Divider, Certifications } from "./components";
 
 export default function HomePage() {
   const Skills = {
@@ -14,11 +15,12 @@ export default function HomePage() {
     Docker: DockerLogo,
   };
   const skillNamed = Object.entries(Skills);
+  const menuItems = ["Sobre", "Projetos", "Contatos"];
 
   return (
-    <div>
+    <>
       <Container>
-        <TopBar items={["Sobre", "Projetos", "Contatos"]} />
+        <TopBar items={menuItems} />
 
         <PhotoContainer
           photo={Perfil}
@@ -39,7 +41,7 @@ export default function HomePage() {
             excelência, dedicação e busca constante por novos desafios.
           </p>
         </AboutBox>
-        <Divider></Divider>
+        {/* <Divider></Divider> */}
 
         <SkillBox>
           <h1>Minhas habilidades</h1>
@@ -56,49 +58,72 @@ export default function HomePage() {
             )}
           </div>
         </SkillBox>
-
-        <div>
-          <p>Projetos</p>
-        </div>
+        <Certifications></Certifications>
       </Container>
-    </div>
+    </>
   );
 }
 
 const Container = styled.div`
   background-color: #34353a;
   min-height: 100vh;
+  flex-wrap: wrap;
+  margin: ${px2vw(0)};
+  max-width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+  }
 `;
 
 const AboutBox = styled.div`
-  padding-left: 80px;
+  padding-left: ${px2vw(80)};
   display: flex;
   justify-content: start;
   align-items: flex-start;
   flex-direction: column;
   text-align: justify;
   h1 {
-    font-size: 50px;
+    font-size: 1.7rem;
   }
-  width: 80%;
+  width: ${px2vw(320, 350)};
   color: white;
-  font-size: 25px;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+
+  @media (max-width: 720px) {
+    width: ${px2vw(320, 720)};
+    min-height: ${px2vw(200, 720)};
+    height: 100%;
+  }
 `;
 
 const SkillBox = styled.div`
   color: white;
   h1 {
-    font-size: 50px;
+    font-size: 1.7rem;
   }
   .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 200px;
+    grid-auto-rows: ${px2vw(320)};
   }
   width: 90%;
+
+  @media (min-width: 768px) {
+    width: ${px2vw(320, 768)};
+    min-height: ${px2vw(200, 768)};
+    height: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    width: ${px2vw(500)};
+    min-height: ${px2vw(300)};
+    height: 100%;
+  }
 `;
