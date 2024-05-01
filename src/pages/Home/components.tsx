@@ -56,11 +56,12 @@ const DividerStyled = styled.div`
 `;
 
 const PhotoContainerStyled = styled.div`
+  overflow-x: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   line-height: 350%;
   margin: 0 ${px2vw(50)};
   img {
@@ -70,7 +71,30 @@ const PhotoContainerStyled = styled.div`
   h2 {
     color: #ffc86b;
   }
-  justify-content: space-around;
+  h1,
+  h2 {
+    animation-duration: 1.5s;
+    animation-name: slidein;
+    @keyframes slidein {
+      from {
+        margin-left: 100%;
+        width: 300%;
+      }
+
+      to {
+        margin-left: 0%;
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 720px) {
+    img {
+      height: ${px2vw(600)};
+    }
+    font-size: 0.9rem;
+    margin: 0 ${px2vw(10)};
+  }
 `;
 const Topbarstyled = styled.div`
   margin-top: ${px2vw(100)};
@@ -81,6 +105,40 @@ const Topbarstyled = styled.div`
   color: white;
   font-size: 2.4rem;
   font-weight: 900;
+
+  @media (min-width: 720px) {
+    font-size: 1rem;
+    margin-top: ${px2vw(40)};
+    width: 50%;
+  }
 `;
 
-export { TopBar, PhotoContainer, Divider, Certifications };
+function AboutBox({ ...props }) {
+  return (
+    <>
+      <AboutBoxStyled> {props.children}</AboutBoxStyled>
+    </>
+  );
+}
+const AboutBoxStyled = styled.div`
+  margin: 0 ${px2vw(50)};
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: justify;
+  color: white;
+  font-size: 2rem;
+  line-height: 150%;
+  h1 {
+    margin: ${px2vw(50)} 0;
+  }
+  @media (min-width: 720px) {
+    font-size: 0.9rem;
+    h1 {
+      margin: ${px2vw(10)} 0;
+    }
+  }
+`;
+
+export { TopBar, PhotoContainer, Divider, Certifications, AboutBox };

@@ -1,18 +1,33 @@
 import React from "react";
 import styled from "styled-components";
-import Perfil from "../../img/fotoperfil.png";
-import NodeLogo from "../../img/nodejs.png";
-import ReactLogo from "../../img/reactjs.png";
-import DockerLogo from "../../img/docker.png";
+import {
+  NodeLogo,
+  ReactLogo,
+  DockerLogo,
+  PostgreSqlLogo,
+  Perfil,
+  GitLogo,
+  AWSLogo,
+} from "../../img";
+
 import SkillCard from "./SkillcardComponent";
 import px2vw from "../../utils/px2vw";
-import { TopBar, PhotoContainer, Divider, Certifications } from "./components";
+import {
+  TopBar,
+  PhotoContainer,
+  Divider,
+  Certifications,
+  AboutBox,
+} from "./components";
 
 export default function HomePage() {
   const Skills = {
     NodeJS: NodeLogo,
     ReactJS: ReactLogo,
     Docker: DockerLogo,
+    PostgreSQL: PostgreSqlLogo,
+    GitHub: GitLogo,
+    "Amazon Web Services-AWS": AWSLogo,
   };
   const skillNamed = Object.entries(Skills);
   const menuItems = ["Sobre", "Projetos", "Contatos"];
@@ -58,13 +73,38 @@ export default function HomePage() {
             )}
           </div>
         </SkillBox>
-        <Certifications></Certifications>
+        {/* <div className="FormationBox">
+          <h1>Formação</h1>
+          <div className="Formation">
+            <h2>Formação Web FullStack - Driven - 2022</h2>
+            <p>
+              Formação intensiva com mais de 1200h e com mais de 20 projetos
+              praticos partindo da base de HTML, CSS, Typescript, ReactJS,
+              NodeJS, MongoDB, PostgreSQL
+            </p>
+          </div>
+          <div className="Formation">
+            <h2>Técnico em eletrotécnica - 2021</h2>
+            <p>Formação técnica com muita pratica</p>
+          </div>
+        </div> */}
       </Container>
     </>
   );
 }
 
 const Container = styled.div`
+  .FormationBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    .Formation {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+  }
   background-color: #34353a;
   /* min-height: 100vh; */
   flex-wrap: wrap;
@@ -81,21 +121,6 @@ const Container = styled.div`
   }
 `;
 
-const AboutBox = styled.div`
-  margin: 0 ${px2vw(50)};
-  display: flex;
-  justify-content: start;
-  align-items: flex-start;
-  flex-direction: column;
-  text-align: justify;
-  color: white;
-  font-size: 2rem;
-  line-height: 150%;
-  h1 {
-    margin: ${px2vw(50)} 0;
-  }
-`;
-
 const SkillBox = styled.div`
   color: white;
   .wrapper {
@@ -106,4 +131,7 @@ const SkillBox = styled.div`
   font-size: 2rem;
   width: 90%;
   margin: ${px2vw(50)} 0;
+  @media (min-width: 720px) {
+    font-size: 0.9rem;
+  }
 `;
