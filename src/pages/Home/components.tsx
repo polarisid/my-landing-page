@@ -139,6 +139,10 @@ const AboutBoxStyled = styled.div`
       margin: ${px2vw(10)} 0;
     }
   }
+
+  //animation
+  -webkit-animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 `;
 
 export { TopBar, PhotoContainer, Divider, Certifications, AboutBox };

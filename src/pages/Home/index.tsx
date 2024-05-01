@@ -106,7 +106,6 @@ const Container = styled.div`
     }
   }
   background-color: #34353a;
-  /* min-height: 100vh; */
   flex-wrap: wrap;
   margin: ${px2vw(0)};
   max-width: 100%;
@@ -118,6 +117,32 @@ const Container = styled.div`
 
   @media (min-width: 1024px) {
     flex-wrap: nowrap;
+  }
+
+  //animmation
+  @-webkit-keyframes fade-in-top {
+    0% {
+      -webkit-transform: translateY(-50px);
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-top {
+    0% {
+      -webkit-transform: translateY(-50px);
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 `;
 

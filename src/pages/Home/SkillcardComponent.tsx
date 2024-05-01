@@ -32,6 +32,10 @@ const GenericSkillCard = styled.div`
     }
     font-size: 0.9rem;
   }
+
+  //
+
+  //
 `;
 
 export { SkillCard };
