@@ -4,7 +4,7 @@ import Perfil from "../../img/fotoperfil.png";
 import NodeLogo from "../../img/nodejs.png";
 import ReactLogo from "../../img/reactjs.png";
 import DockerLogo from "../../img/docker.png";
-import SkillCard from "../../components/SkillCard";
+import SkillCard from "./SkillcardComponent";
 import px2vw from "../../utils/px2vw";
 import { TopBar, PhotoContainer, Divider, Certifications } from "./components";
 
@@ -66,7 +66,7 @@ export default function HomePage() {
 
 const Container = styled.div`
   background-color: #34353a;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   flex-wrap: wrap;
   margin: ${px2vw(0)};
   max-width: 100%;
@@ -82,48 +82,28 @@ const Container = styled.div`
 `;
 
 const AboutBox = styled.div`
-  padding-left: ${px2vw(80)};
+  margin: 0 ${px2vw(50)};
   display: flex;
   justify-content: start;
   align-items: flex-start;
   flex-direction: column;
   text-align: justify;
-  h1 {
-    font-size: 1.7rem;
-  }
-  width: ${px2vw(320, 350)};
   color: white;
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-
-  @media (max-width: 720px) {
-    width: ${px2vw(320, 720)};
-    min-height: ${px2vw(200, 720)};
-    height: 100%;
+  font-size: 2rem;
+  line-height: 150%;
+  h1 {
+    margin: ${px2vw(50)} 0;
   }
 `;
 
 const SkillBox = styled.div`
   color: white;
-  h1 {
-    font-size: 1.7rem;
-  }
   .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: ${px2vw(320)};
+    /* grid-auto-rows: ${px2vw(320)}; */
   }
+  font-size: 2rem;
   width: 90%;
-
-  @media (min-width: 768px) {
-    width: ${px2vw(320, 768)};
-    min-height: ${px2vw(200, 768)};
-    height: 100%;
-  }
-
-  @media (min-width: 1024px) {
-    width: ${px2vw(500)};
-    min-height: ${px2vw(300)};
-    height: 100%;
-  }
+  margin: ${px2vw(50)} 0;
 `;

@@ -58,29 +58,28 @@ const DividerStyled = styled.div`
 const PhotoContainerStyled = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   color: white;
-  font-size: 0.8rem;
+  font-size: 1.3rem;
+  line-height: 350%;
+  margin: 0 ${px2vw(50)};
+  img {
+    border-radius: 30%;
+    height: ${px2vw(1300)};
+  }
   h2 {
     color: #ffc86b;
   }
   justify-content: space-around;
-  img {
-    border-radius: 40%;
-    height: ${px2vw(600)};
-  }
-
-  @media (max-width: 720px) {
-    font-size: 0.8rem;
-    flex-direction: column;
-  }
 `;
 const Topbarstyled = styled.div`
+  margin-top: ${px2vw(100)};
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
   color: white;
-  font-size: 1.9rem;
+  font-size: 2.4rem;
   font-weight: 900;
 `;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import px2vw from "../../utils/px2vw";
 
 export default function SkillCard({ ...prop }) {
   return (
@@ -13,7 +14,7 @@ export default function SkillCard({ ...prop }) {
 
 const GenericSkillCard = styled.div`
   img {
-    height: 130px;
+    height: ${px2vw(200)};
     width: auto;
   }
   background-color: #3d3e42;
