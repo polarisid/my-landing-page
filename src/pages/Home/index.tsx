@@ -73,21 +73,30 @@ export default function HomePage() {
             )}
           </div>
         </SkillBox>
-        {/* <div className="FormationBox">
+        <div className="FormationBox">
           <h1>Formação</h1>
-          <div className="Formation">
+          <div className="formation">
             <h2>Formação Web FullStack - Driven - 2022</h2>
             <p>
-              Formação intensiva com mais de 1200h e com mais de 20 projetos
-              praticos partindo da base de HTML, CSS, Typescript, ReactJS,
-              NodeJS, MongoDB, PostgreSQL
+              Experiência intensiva de aprendizado, totalizando mais de 1200
+              horas, com foco em práticas hands-on e a realização de mais de 20
+              projetos concretos. Desde os fundamentos essenciais de HTML e CSS
+              até tecnologias avançadas como TypeScript, ReactJS, NodeJS,
+              MongoDB e PostgreSQL, esta formação proporcionou uma imersão
+              completa no desenvolvimento web FullStack, capacitando-me a
+              enfrentar desafios complexos com confiança e competência técnica.
+            </p>
+
+            <h2>Técnico em eletrotécnica - 2021</h2>
+            <p>
+              Formação técnica com ênfase prática e enfoque em projetos
+              aplicados, proporcionando uma experiência sólida e abrangente.
+              Destaque para a integração entre teoria e prática, permitindo a
+              realização de diversos projetos e atividades que consolidaram
+              habilidades técnicas essenciais.
             </p>
           </div>
-          <div className="Formation">
-            <h2>Técnico em eletrotécnica - 2021</h2>
-            <p>Formação técnica com muita pratica</p>
-          </div>
-        </div> */}
+        </div>
       </Container>
     </>
   );
@@ -95,14 +104,17 @@ export default function HomePage() {
 
 const Container = styled.div`
   .FormationBox {
+    margin: 0 ${px2vw(50)};
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
-    .Formation {
+    .formation {
       display: flex;
       flex-direction: column;
       align-items: start;
+      justify-content: start;
+      text-align: justify;
     }
   }
   background-color: #34353a;
