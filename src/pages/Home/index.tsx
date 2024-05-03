@@ -76,7 +76,12 @@ export default function HomePage() {
         <div className="FormationBox">
           <h1>Formação</h1>
           <div className="formation">
-            <h2>Formação Web FullStack - Driven - 2022</h2>
+            <div className="title">
+              <span className="material-symbols-outlined">
+                expand_circle_right
+              </span>
+              <h2>Formação Web FullStack - Driven - 2022</h2>
+            </div>
             <p>
               Experiência intensiva de aprendizado, totalizando mais de 1200
               horas, com foco em práticas hands-on e a realização de mais de 20
@@ -86,8 +91,12 @@ export default function HomePage() {
               completa no desenvolvimento web FullStack, capacitando-me a
               enfrentar desafios complexos com confiança e competência técnica.
             </p>
-
-            <h2>Técnico em eletrotécnica - 2021</h2>
+            <div className="title">
+              <span className="material-symbols-outlined">
+                expand_circle_right
+              </span>
+              <h2>Tecnico em Eletrotécnica-CTEP-2023</h2>
+            </div>
             <p>
               Formação técnica com ênfase prática e enfoque em projetos
               aplicados, proporcionando uma experiência sólida e abrangente.
@@ -109,6 +118,24 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     color: white;
+    font-size: 1rem;
+    @media (max-width: 720px) {
+      h2 {
+        font-size: 3rem;
+      }
+      p {
+        font-size: 2rem;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+    }
+    .formation .title {
+      margin: ${px2vw(10)};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .formation {
       display: flex;
       flex-direction: column;
