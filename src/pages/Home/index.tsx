@@ -9,6 +9,7 @@ import {
   GitLogo,
   AWSLogo,
 } from "../../img";
+import { useRef } from "react";
 
 import SkillCard from "./SkillcardComponent";
 import px2vw from "../../utils/px2vw";
@@ -27,15 +28,16 @@ export default function HomePage() {
     Docker: DockerLogo,
     PostgreSQL: PostgreSqlLogo,
     GitHub: GitLogo,
-    "Amazon Web Services-AWS": AWSLogo,
+    "AWS Server": AWSLogo,
   };
   const skillNamed = Object.entries(Skills);
   const menuItems = ["Sobre", "Projetos", "Contatos"];
+  const sobreref = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
       <Container>
-        <TopBar items={menuItems} />
+        <TopBar items={menuItems} reference={sobreref} />
 
         <PhotoContainer
           photo={Perfil}
@@ -44,17 +46,22 @@ export default function HomePage() {
         />
 
         <AboutBox>
-          <h1>Sobre</h1>
-          <p>
-            Daniel Carvalho personifica a convergência entre eletricidade e
-            tecnologia, com uma formação sólida como Técnico Eletrotécnico e sua
-            atual graduação em Engenharia Elétrica. Além disso, ele é um
-            desenvolvedor web Full Stack. Sua mente criativa e habilidades
-            analíticas o capacitam a enfrentar desafios tanto no mundo físico
-            quanto no virtual. Como Lider dedicado, ele compartilha seu
-            conhecimento e colabora em equipe. Seu nome é sinônimo de
-            excelência, dedicação e busca constante por novos desafios.
-          </p>
+          <h1 id="sobre" ref={sobreref}>
+            Sobre
+          </h1>
+          <div className="abouttext">
+            <div className="divider"></div>
+            <p>
+              Daniel Carvalho personifica a convergência entre eletricidade e
+              tecnologia, com uma formação sólida como Técnico Eletrotécnico e
+              sua atual graduação em Engenharia Elétrica. Além disso, ele é um
+              desenvolvedor web Full Stack. Sua mente criativa e habilidades
+              analíticas o capacitam a enfrentar desafios tanto no mundo físico
+              quanto no virtual. Como Lider dedicado, ele compartilha seu
+              conhecimento e colabora em equipe. Seu nome é sinônimo de
+              excelência, dedicação e busca constante por novos desafios.
+            </p>
+          </div>
         </AboutBox>
         {/* <Divider></Divider> */}
 

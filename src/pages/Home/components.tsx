@@ -7,7 +7,18 @@ function TopBar({ ...props }) {
     <>
       <Topbarstyled>
         {props.items ? (
-          props.items.map((item: any, key: any) => <p key={key}>{item}</p>)
+          props.items.map((item: any, key: any) => (
+            <p
+              onClick={() => {
+                props.reference.current?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+              key={key}
+            >
+              {item}
+            </p>
+          ))
         ) : (
           <></>
         )}
@@ -97,6 +108,7 @@ const PhotoContainerStyled = styled.div`
   }
 `;
 const Topbarstyled = styled.div`
+  cursor: pointer;
   margin-top: ${px2vw(100)};
   display: flex;
   justify-content: space-around;
@@ -131,12 +143,34 @@ const AboutBoxStyled = styled.div`
   font-size: 2rem;
   line-height: 150%;
   h1 {
+    margin-top: ${px2vw(50)};
+  }
+  .abouttext {
+    display: grid;
+  }
+  .divider {
+    margin-top: ${px2vw(30)};
+    height: ${px2vw(10)};
+    width: 30%;
+    background-color: #ffc86b;
+    margin-right: ${px2vw(5)};
     margin: ${px2vw(50)} 0;
   }
+
   @media (min-width: 720px) {
-    font-size: 0.9rem;
+    .abouttext {
+      display: flex;
+    }
+    font-size: 1rem;
     h1 {
       margin: ${px2vw(10)} 0;
+    }
+    .divider {
+      margin-top: ${px2vw(10)};
+      height: ${px2vw(3)};
+      width: 10%;
+      background-color: #ffc86b;
+      margin-right: ${px2vw(5)};
     }
   }
 
