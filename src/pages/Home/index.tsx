@@ -15,6 +15,7 @@ import ProjetosSection from "./ProjetosComponent";
 import SkillSection from "./SkillComponent";
 import TopBarSection from "./TopBarComponent";
 import PhotoSection from "./PhotoComponent";
+import ContatosSection from "./ContatosComponent";
 
 export default function HomePage() {
   const Skills = {
@@ -31,7 +32,12 @@ export default function HomePage() {
   const menuItems = ["Sobre", "Projetos", "Contatos"];
   const sobreref = useRef<HTMLDivElement | null>(null);
   const projetosref = useRef<HTMLDivElement | null>(null);
-  const references = { Sobre: sobreref, Projetos: projetosref };
+  const contatosref = useRef<HTMLDivElement | null>(null);
+  const references = {
+    Sobre: sobreref,
+    Projetos: projetosref,
+    Contatos: contatosref,
+  };
   return (
     <>
       <Container>
@@ -78,6 +84,7 @@ export default function HomePage() {
           </div>
         </div>
         <ProjetosSection reference={projetosref} />
+        <ContatosSection reference={contatosref} />
       </Container>
     </>
   );
