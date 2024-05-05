@@ -30,11 +30,12 @@ export default function HomePage() {
   const skillNamed = Object.entries(Skills);
   const menuItems = ["Sobre", "Projetos", "Contatos"];
   const sobreref = useRef<HTMLDivElement | null>(null);
-
+  const projetosref = useRef<HTMLDivElement | null>(null);
+  const references = { Sobre: sobreref, Projetos: projetosref };
   return (
     <>
       <Container>
-        <TopBarSection items={menuItems} reference={sobreref} />
+        <TopBarSection items={menuItems} reference={references} />
         <PhotoSection
           photo={Perfil}
           name="Daniel Carvalho"
@@ -76,7 +77,7 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-        <ProjetosSection></ProjetosSection>
+        <ProjetosSection reference={projetosref} />
       </Container>
     </>
   );

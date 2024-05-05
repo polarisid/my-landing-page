@@ -10,7 +10,7 @@ export default function TopBarSection({ ...props }) {
           props.items.map((item: any, key: any) => (
             <p
               onClick={() => {
-                props.reference.current?.scrollIntoView({
+                props.reference[item].current?.scrollIntoView({
                   behavior: "smooth",
                 });
               }}
