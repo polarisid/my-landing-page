@@ -13,15 +13,12 @@ export default function ProjetosSection({ ...props }) {
         <div className="wrapper">
           <CardProject>
             <img src={TrackitLogo} alt="" />
-            <p>Trackit</p>
           </CardProject>
           <CardProject>
             <img src={CineflexLogo} alt="" />
-            <p>Cineflex</p>
           </CardProject>
           <CardProject>
             <img src={MyWalletLogo} alt="" />
-            <p>MyWallet</p>
           </CardProject>
         </div>
       </ProjetosSectionStyled>
@@ -36,6 +33,10 @@ const ProjetosSectionStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
+  @media (max-width: 720px) {
+    width: 100%;
+    font-size: 1.5rem;
+  }
 `;
 
 const CardProject = styled.div`
@@ -46,4 +47,9 @@ const CardProject = styled.div`
   margin: 5px;
   background-color: #3d3e42;
   border-radius: 10%;
+  @media (max-width: 720px) {
+    img {
+      height: ${px2vw(350)};
+    }
+  }
 `;
