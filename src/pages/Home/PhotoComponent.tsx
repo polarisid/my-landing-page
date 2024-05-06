@@ -1,16 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import px2vw from "../../utils/px2vw";
+import { Fade } from "react-awesome-reveal";
 
 export default function PhotoSection({ ...props }) {
   return (
     <>
-      <PhotoContainerStyled>
-        <img src={props.photo} alt="Foto de Perfil" title="Foto de perfil" />
-        <h1>
-          Eu sou <h2>{props.name}</h2> {props.atribbute}
-        </h1>
-      </PhotoContainerStyled>
+      <Fade>
+        <PhotoContainerStyled>
+          <img src={props.photo} alt="Foto de Perfil" title="Foto de perfil" />
+          <h1>
+            Eu sou
+            <Fade cascade duration={2000}>
+              <h2>{props.name}</h2>
+            </Fade>
+            {props.atribbute}
+          </h1>
+        </PhotoContainerStyled>
+      </Fade>
     </>
   );
 }
@@ -31,7 +38,7 @@ const PhotoContainerStyled = styled.div`
   h2 {
     color: #ffc86b;
   }
-  h1,
+  /* h1,
   h2 {
     animation-duration: 1.5s;
     animation-name: slidein;
@@ -46,7 +53,7 @@ const PhotoContainerStyled = styled.div`
         width: 100%;
       }
     }
-  }
+  } */
 
   @media (min-width: 720px) {
     img {

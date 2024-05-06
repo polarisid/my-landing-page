@@ -1,20 +1,23 @@
 import styled from "styled-components";
 import px2vw from "../../utils/px2vw";
+import { Fade } from "react-awesome-reveal";
 
 export default function SkillSection({ ...props }) {
   return (
     <SkillBox>
       <h1>Minhas habilidades</h1>
       <div className="wrapper">
-        {props.skills ? (
-          props.skills.map((item: any, key: any) => (
-            <SkillCard skillName={item[0]} image={item[1]}>
-              {item[0]}
-            </SkillCard>
-          ))
-        ) : (
-          <></>
-        )}
+        <Fade cascade duration={500}>
+          {props.skills ? (
+            props.skills.map((item: any, key: any) => (
+              <SkillCard skillName={item[0]} image={item[1]}>
+                {item[0]}
+              </SkillCard>
+            ))
+          ) : (
+            <></>
+          )}
+        </Fade>
       </div>
     </SkillBox>
   );

@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Global />
-      <HomePage></HomePage>
+      <HomePage />
     </>
   );
 }

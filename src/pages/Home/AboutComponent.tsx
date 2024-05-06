@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import px2vw from "../../utils/px2vw";
+import { Slide } from "react-awesome-reveal";
+
 export default function AboutSection({ ...props }) {
   return (
     <>
       <AboutBoxStyled>
-        <h1 id="sobre" ref={props.reference}>
-          Sobre
-        </h1>
-        <div className="abouttext">
-          <div className="divider"></div>
-          <p>{props.description}</p>
-        </div>
+        <Slide direction="up">
+          <h1 id="sobre" ref={props.reference}>
+            Sobre
+          </h1>
+          <div className="abouttext">
+            <div className="divider"></div>
+            <p>{props.description}</p>
+          </div>
+        </Slide>
       </AboutBoxStyled>
     </>
   );
@@ -56,8 +60,4 @@ const AboutBoxStyled = styled.div`
       margin-right: ${px2vw(5)};
     }
   }
-
-  //animation
-  -webkit-animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 `;

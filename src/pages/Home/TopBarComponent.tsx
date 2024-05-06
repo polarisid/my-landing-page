@@ -1,27 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 import px2vw from "../../utils/px2vw";
+import { Slide } from "react-awesome-reveal";
 
 export default function TopBarSection({ ...props }) {
   return (
     <>
       <Topbarstyled>
-        {props.items ? (
-          props.items.map((item: any, key: any) => (
-            <p
-              onClick={() => {
-                props.reference[item].current?.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }}
-              key={key}
-            >
-              {item}
-            </p>
-          ))
-        ) : (
-          <></>
-        )}
+        <Slide direction="down">
+          {props.items ? (
+            props.items.map((item: any, key: any) => (
+              <p
+                onClick={() => {
+                  props.reference[item].current?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+                key={key}
+              >
+                {item}
+              </p>
+            ))
+          ) : (
+            <></>
+          )}
+        </Slide>
       </Topbarstyled>
     </>
   );
