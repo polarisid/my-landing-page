@@ -35,11 +35,13 @@ function SkillCard({ ...prop }) {
 }
 
 const GenericSkillCard = styled.div`
+  box-shadow: 0px 1px 8px #0000005a;
   img {
     height: ${px2vw(170)};
     width: auto;
     margin-bottom: ${px2vw(4)};
   }
+
   padding: ${px2vw(20)};
   background-color: #3d3e42;
   color: white;

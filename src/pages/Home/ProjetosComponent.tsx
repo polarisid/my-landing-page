@@ -54,13 +54,15 @@ const ProjetosSectionStyled = styled.div`
 `;
 
 const CardProject = styled.div`
+  box-shadow: 0px 1px 8px #20202063;
+
   img {
     height: ${px2vw(150)};
     width: auto;
   }
   margin: 5px;
   background-color: #3d3e42;
-  border-radius: 20%;
+  border-radius: 10%;
   @media (max-width: 720px) {
     img {
       height: ${px2vw(350)};
