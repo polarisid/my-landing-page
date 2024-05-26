@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import px2vw from "../../utils/px2vw";
-import TrackitLogo from "../../img/trackit.png";
-import CineflexLogo from "../../img/cineflexlogo.png";
-import MyWalletLogo from "../../img/mywalletlogo.png";
-import ProduappLogo from "../../img/produapp.png";
+
+import {
+  ACreports,
+  ProduappLogo,
+  MyWalletLogo,
+  CineflexLogo,
+  TrackitLogo,
+} from "../../img";
 import { Fade } from "react-awesome-reveal";
 
 export default function ProjetosSection({ ...props }) {
@@ -26,6 +30,9 @@ export default function ProjetosSection({ ...props }) {
             </CardProject>
             <CardProject>
               <img src={ProduappLogo} alt="" />
+            </CardProject>
+            <CardProject>
+              <img src={ACreports} alt="" />
             </CardProject>
           </Fade>
         </div>
@@ -62,6 +69,7 @@ const CardProject = styled.div`
   }
   margin: 5px;
   background-color: #3d3e42;
+
   border-radius: 10%;
   @media (max-width: 720px) {
     img {
