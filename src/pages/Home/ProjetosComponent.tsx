@@ -7,6 +7,7 @@ import {
   MyWalletLogo,
   CineflexLogo,
   TrackitLogo,
+  HTlogo,
 } from "../../img";
 import { Fade } from "react-awesome-reveal";
 
@@ -32,7 +33,22 @@ export default function ProjetosSection({ ...props }) {
               <img src={ProduappLogo} alt="" />
             </CardProject>
             <CardProject>
-              <img src={ACreports} alt="" />
+              <a
+                href="https://form-to-pdf-puce.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={ACreports} alt="" />
+              </a>
+            </CardProject>
+            <CardProject>
+              <a
+                href="https://chacklist-temp.vercel.app/?"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={HTlogo} alt="" />
+              </a>
             </CardProject>
           </Fade>
         </div>

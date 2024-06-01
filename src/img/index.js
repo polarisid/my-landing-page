@@ -10,6 +10,7 @@ import ProduappLogo from "./produapp.png";
 import MyWalletLogo from "./mywalletlogo.png";
 import CineflexLogo from "./cineflexlogo.png";
 import TrackitLogo from "./trackit.png";
+import HTlogo from "./htlogo.png";
 
 export {
   Perfil,
@@ -24,4 +25,5 @@ export {
   MyWalletLogo,
   CineflexLogo,
   TrackitLogo,
+  HTlogo,
 };
