@@ -21,13 +21,31 @@ export default function ProjetosSection({ ...props }) {
         <div className="wrapper">
           <Fade cascade duration={500}>
             <CardProject>
-              <img src={TrackitLogo} alt="" />
+              <a
+                href="https://trackit-roan-six.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={TrackitLogo} alt="" />
+              </a>
             </CardProject>
             <CardProject>
-              <img src={CineflexLogo} alt="" />
+              <a
+                href="https://projeto-09-cineflex-react.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={CineflexLogo} alt="" />
+              </a>
             </CardProject>
             <CardProject>
-              <img src={MyWalletLogo} alt="" />
+              <a
+                href="https://my-wallet-front-bay.vercel.app/sign-up"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={MyWalletLogo} alt="" />
+              </a>
             </CardProject>
             <CardProject>
               <img src={ProduappLogo} alt="" />
