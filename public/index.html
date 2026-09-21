@@ -2,33 +2,63 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0A0B0F" />
+
+    <!-- ================= SEO ================= -->
+    <title>DACARI — Sistemas sob medida & IA para empresas | Daniel Carvalho</title>
     <meta
       name="description"
-      content="Daniel Carvalho — desenvolvedor full stack. Crio sistemas sob medida e implemento IA para empresas automatizarem processos e resolverem problemas com tecnologia web moderna. React, Node.js, IA."
+      content="Daniel Carvalho (DACARI) — desenvolvedor full stack. Crio sistemas sob medida e implemento IA para empresas automatizarem processos e resolverem problemas com tecnologia web moderna. React, Node.js e IA aplicada."
     />
-    <meta name="author" content="Daniel Carvalho Ribeiro" />
     <meta
       name="keywords"
-      content="desenvolvedor full stack, sistemas sob medida, IA para empresas, automação, desenvolvimento web, React, Node.js, landing page"
+      content="desenvolvedor full stack, sistemas sob medida, IA para empresas, automação de processos, desenvolvimento web, React, Node.js, landing page, Daniel Carvalho, DACARI"
     />
+    <meta name="author" content="Daniel Carvalho Ribeiro" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="theme-color" content="#0A0B0F" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://dacari.com.br/" />
 
-    <!-- Open Graph -->
+    <!-- ================= Ícones ================= -->
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- ================= Open Graph ================= -->
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Daniel Carvalho — Sistemas sob medida & IA para empresas"
-    />
+    <meta property="og:site_name" content="DACARI" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://dacari.com.br/" />
+    <meta property="og:title" content="DACARI — Sistemas sob medida & IA para empresas" />
     <meta
       property="og:description"
-      content="Sistemas que resolvem problemas reais. Desenvolvimento full stack, IA aplicada e automação para a sua empresa."
+      content="Sistemas que resolvem problemas reais. Desenvolvimento full stack, IA aplicada e automação para a sua empresa — do diagnóstico ao deploy."
     />
-    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
+    <meta property="og:image" content="https://dacari.com.br/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="DACARI — Daniel Carvalho — Sistemas sob medida e IA para empresas"
+    />
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- ================= Twitter ================= -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DACARI — Sistemas sob medida & IA para empresas" />
+    <meta
+      name="twitter:description"
+      content="Sistemas que resolvem problemas reais. Full stack, IA e automação para empresas."
+    />
+    <meta name="twitter:image" content="https://dacari.com.br/og-image.png" />
+    <meta
+      name="twitter:image:alt"
+      content="DACARI — Sistemas sob medida e IA para empresas"
+    />
 
+    <!-- ================= Fontes ================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,8 +66,68 @@
       rel="stylesheet"
     />
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Daniel Carvalho — Sistemas sob medida & IA para empresas</title>
+    <!-- ================= Dados estruturados (JSON-LD) ================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://dacari.com.br/#daniel",
+            "name": "Daniel Carvalho Ribeiro",
+            "alternateName": "DACARI",
+            "url": "https://dacari.com.br/",
+            "image": "https://dacari.com.br/og-image.png",
+            "jobTitle": "Desenvolvedor Full Stack",
+            "email": "danielcarvalhorst@gmail.com",
+            "sameAs": [
+              "https://github.com/polarisid",
+              "https://www.linkedin.com/in/danielcarvalhoribeiro/"
+            ],
+            "knowsAbout": [
+              "Desenvolvimento web",
+              "React",
+              "Node.js",
+              "Inteligência Artificial",
+              "Automação de processos",
+              "PostgreSQL",
+              "Engenharia Elétrica"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://dacari.com.br/#dacari",
+            "name": "DACARI",
+            "description": "Sistemas sob medida e IA para empresas — desenvolvimento full stack, automação e tecnologia web moderna.",
+            "url": "https://dacari.com.br/",
+            "image": "https://dacari.com.br/og-image.png",
+            "priceRange": "$$",
+            "areaServed": "BR",
+            "availableLanguage": "pt-BR",
+            "founder": { "@id": "https://dacari.com.br/#daniel" },
+            "sameAs": [
+              "https://github.com/polarisid",
+              "https://www.linkedin.com/in/danielcarvalhoribeiro/"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "telephone": "+55-98-98713-2829",
+              "email": "danielcarvalhorst@gmail.com",
+              "availableLanguage": "Portuguese"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://dacari.com.br/#website",
+            "url": "https://dacari.com.br/",
+            "name": "DACARI",
+            "inLanguage": "pt-BR",
+            "publisher": { "@id": "https://dacari.com.br/#daniel" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <noscript>Você precisa habilitar o JavaScript para rodar este site.</noscript>
