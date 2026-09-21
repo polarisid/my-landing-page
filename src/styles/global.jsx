@@ -1,23 +1,31 @@
 import { createGlobalStyle } from "styled-components";
-import px2vw from "../utils/px2vw";
 
 export const Global = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
-  :root {
-      font-size: ${px2vw(24)};
 
-      @media (min-width: 768px) {
-        font-size: ${px2vw(18)};
-      }
+  /* Scroll-reveal — driven by IntersectionObserver (see Reveal component) */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
 
-      @media (min-width: 1024px) {
-        font-size: ${px2vw(16)};
-      }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
     }
+  }
 `;
 
 export default Global;
