@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="brand">
             <Logo />
             <span className="tagline">
-              Daniel Carvalho — onde a eletricidade encontra o código.
+              Daniel Carvalho — onde suas ideias se transformam em resultados.
             </span>
           </div>
 
@@ -26,7 +26,6 @@ export default function Footer() {
 
         <div className="base">
           <span>© {year} Daniel Carvalho Ribeiro</span>
-          <span className="built">Feito com React &amp; styled-components</span>
           <a href="#topo" className="top">
             Voltar ao topo ↑
           </a>

@@ -1,44 +1,60 @@
 import styled from "styled-components";
-import { Container, Section, Eyebrow, SectionTitle } from "../../components/ui";
+import { Container, Section, Eyebrow, SectionTitle, Lead } from "../../components/ui";
 import Reveal from "../../components/Reveal";
-import {
-  ReactLogo,
-  NodeLogo,
-  DockerLogo,
-  PostgreSqlLogo,
-  GitLogo,
-  AWSLogo,
-} from "../../img";
 
-const CORE = [
-  { name: "React", img: ReactLogo },
-  { name: "Node.js", img: NodeLogo },
-  { name: "PostgreSQL", img: PostgreSqlLogo },
-  { name: "Docker", img: DockerLogo },
-  { name: "Git", img: GitLogo },
-  { name: "AWS", img: AWSLogo },
-];
+const ICONS: Record<string, JSX.Element> = {
+  modern: <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3zM4 7.5l8 4.5 8-4.5M12 12v9" />,
+  cloud: (
+    <path d="M7 18a4 4 0 01-.5-7.97 5.5 5.5 0 0110.66-1.2A4.5 4.5 0 0117 18H7z" />
+  ),
+  secure: <path d="M12 3l7 3v5c0 4.4-3 8.3-7 9.5C8 19.3 5 15.4 5 11V6l7-3zM9.5 11.5l1.8 1.8 3.7-3.8" />,
+  fast: (
+    <path d="M7 3h10a1 1 0 011 1v16a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1zM11 18h2M13 7l-3 4h4l-3 4" />
+  ),
+  integrate: (
+    <path d="M9 7H6a3 3 0 000 6h3M15 7h3a3 3 0 010 6h-3M8 10h8" />
+  ),
+  evolve: (
+    <path d="M12 20V8M6 14l6-6 6 6M5 4h14" />
+  ),
+};
 
-const GROUPS = [
+const BENEFITS = [
   {
-    title: "Front-end",
+    id: "modern",
+    title: "Moderno e escalável",
+    desc: "Construído com tecnologia atual e sólida, que acompanha o crescimento da sua operação sem travar.",
     tone: "signal" as const,
-    items: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Styled-Components"],
   },
   {
-    title: "Back-end",
+    id: "cloud",
+    title: "Na nuvem, 24/7",
+    desc: "Seu sistema no ar a qualquer hora, acessível de qualquer lugar e de qualquer dispositivo.",
     tone: "signal" as const,
-    items: ["Node.js", "Express", "REST APIs", "PostgreSQL", "MongoDB", "JWT"],
   },
   {
-    title: "DevOps & Infra",
+    id: "secure",
+    title: "Seguro e com backup",
+    desc: "Dados protegidos, acessos controlados e cópias de segurança — sem dor de cabeça.",
     tone: "live" as const,
-    items: ["Docker", "AWS", "Git / GitHub", "Vercel", "Linux"],
   },
   {
-    title: "Base técnica",
+    id: "fast",
+    title: "Rápido no celular",
+    desc: "Leve e responsivo: abre rápido e funciona bem em qualquer tela, do desktop ao celular.",
     tone: "live" as const,
-    items: ["Eletrotécnica", "Eng. Elétrica", "Supervisão", "Automação"],
+  },
+  {
+    id: "integrate",
+    title: "Integra e automatiza",
+    desc: "Conecta com o que você já usa — WhatsApp, planilhas, outros sistemas — e elimina trabalho manual.",
+    tone: "signal" as const,
+  },
+  {
+    id: "evolve",
+    title: "Pronto para evoluir",
+    desc: "Base organizada que recebe novas funções sem retrabalho, no ritmo da sua empresa.",
+    tone: "live" as const,
   },
 ];
 
@@ -47,170 +63,106 @@ export default function Stack() {
     <Section id="stack">
       <Container>
         <Reveal>
-          <Eyebrow $tone="signal">02 / Capacidades</Eyebrow>
+          <Eyebrow $tone="signal">Tecnologia</Eyebrow>
           <SectionTitle>
-            A stack que uso para <em>construir</em>.
+            Tecnologia que trabalha <em>a seu favor</em>.
           </SectionTitle>
+          <Lead>
+            Você não precisa entender de código. Precisa que funcione, seja
+            rápido e não te dê dor de cabeça — é isso que a tecnologia certa,
+            bem aplicada, entrega.
+          </Lead>
         </Reveal>
-      </Container>
 
-      <Marquee aria-hidden="true">
-        <div className="track">
-          {[...CORE, ...CORE].map((t, i) => (
-            <span className="chip" key={i}>
-              <img src={t.img} alt="" />
-              {t.name}
-            </span>
-          ))}
-        </div>
-      </Marquee>
-
-      <Container>
-        <Groups>
-          {GROUPS.map((g, gi) => (
-            <Reveal key={g.title} delay={gi * 80} className="group">
-              <h3>
-                <i className={g.tone} />
-                {g.title}
-              </h3>
-              <ul>
-                {g.items.map((it) => (
-                  <li key={it}>{it}</li>
-                ))}
-              </ul>
+        <Grid>
+          {BENEFITS.map((b, i) => (
+            <Reveal key={b.id} delay={i * 60} className="cell">
+              <article className={`card ${b.tone}`}>
+                <span className="ico">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    {ICONS[b.id]}
+                  </svg>
+                </span>
+                <h3>{b.title}</h3>
+                <p>{b.desc}</p>
+              </article>
             </Reveal>
           ))}
-        </Groups>
+        </Grid>
       </Container>
     </Section>
   );
 }
 
-const Marquee = styled.div`
-  margin: clamp(32px, 5vw, 48px) 0;
-  padding: 4px 0;
-  border-block: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.012);
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 8%,
-    #000 92%,
-    transparent
-  );
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-
-  .track {
-    display: flex;
-    gap: 14px;
-    width: max-content;
-    padding: 16px 7px;
-    animation: scroll 26s linear infinite;
-  }
-  &:hover .track {
-    animation-play-state: paused;
-  }
-
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
-    border: 1px solid var(--line-bright);
-    border-radius: 999px;
-    background: var(--panel);
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--text);
-    white-space: nowrap;
-  }
-  .chip img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-  }
-
-  @keyframes scroll {
-    to {
-      transform: translateX(-50%);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .track {
-      animation: none;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  }
-`;
-
-const Groups = styled.div`
+const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  margin-top: clamp(36px, 6vw, 56px);
 
-  .group {
+  & > .cell {
+    display: flex;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: var(--panel);
-    padding: 22px 20px;
     transition: border-color 0.25s ease, transform 0.25s ease;
   }
-  .group:hover {
+  .card:hover {
     border-color: var(--line-bright);
     transform: translateY(-3px);
   }
-  .group h3 {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
+
+  .ico {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    color: var(--signal);
     margin-bottom: 16px;
   }
-  .group h3 i {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
+  .card.live .ico {
+    color: var(--live);
   }
-  .group h3 i.signal {
-    background: var(--signal);
-    box-shadow: 0 0 8px var(--signal);
-  }
-  .group h3 i.live {
-    background: var(--live);
-    box-shadow: 0 0 8px var(--live);
-  }
-  .group ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .group li {
-    font-size: 0.95rem;
-    color: var(--text);
-    padding-left: 16px;
-    position: relative;
-  }
-  .group li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.62em;
-    width: 6px;
-    height: 1px;
-    background: var(--faint);
+  .ico svg {
+    width: 23px;
+    height: 23px;
   }
 
-  @media (max-width: 900px) {
+  .card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.16rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 860px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 460px) {
+  @media (max-width: 520px) {
     grid-template-columns: 1fr;
   }
 `;
