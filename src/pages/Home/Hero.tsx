@@ -2,12 +2,22 @@ import styled from "styled-components";
 import { Perfil } from "../../img";
 import { Container } from "../../components/ui";
 import SignalTrace from "../../components/SignalTrace";
+import Typewriter from "../../components/Typewriter";
 
 const STATS = [
   { value: "Full Stack", label: "front + back" },
   { value: "IA aplicada", label: "ao seu negócio" },
   { value: "Sob medida", label: "do diagnóstico ao deploy" },
   { value: "20+", label: "projetos construídos" },
+];
+
+const PHRASES = [
+  "Sistemas que resolvem problemas reais.",
+  "Software sob medida pra sua empresa.",
+  "Automação que economiza o seu tempo.",
+  "IA que trabalha pelo seu negócio.",
+  "Ideias que viram resultado.",
+  "Do diagnóstico ao sistema no ar.",
 ];
 
 export default function Hero() {
@@ -26,10 +36,8 @@ export default function Hero() {
             <i /> Software sob medida · IA para empresas
           </span>
 
-          <h1>
-            Sistemas que resolvem
-            <br />
-            problemas <span className="hl">reais</span>.
+          <h1 aria-label="Sistemas que resolvem problemas reais">
+            <Typewriter phrases={PHRASES} />
           </h1>
 
           <p className="thesis">
@@ -134,7 +142,7 @@ const Wrap = styled.section`
   .copy {
     position: relative;
     z-index: 2;
-    max-width: 620px;
+    max-width: 680px;
   }
 
   .kicker {
@@ -163,18 +171,33 @@ const Wrap = styled.section`
   h1 {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(2.9rem, 8vw, 5.4rem);
-    line-height: 0.98;
-    letter-spacing: -0.035em;
+    font-size: clamp(2.2rem, 5.6vw, 3.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
     margin: 22px 0 0;
+    display: flex;
+    align-items: center;
+    min-height: 2.45em;
     background: linear-gradient(180deg, #ffffff, #b9c0cc);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-  h1 .hl {
+  h1 .tw-caret {
+    display: inline-block;
+    width: 4px;
+    height: 0.92em;
+    margin-left: 0.08em;
+    transform: translateY(0.12em);
+    border-radius: 1px;
+    background: var(--live);
     -webkit-text-fill-color: var(--live);
-    color: var(--live);
+    animation: caret-blink 1.05s steps(1) infinite;
+  }
+  @keyframes caret-blink {
+    50% {
+      opacity: 0;
+    }
   }
 
   .thesis {
@@ -286,6 +309,9 @@ const Wrap = styled.section`
   }
 
   @media (max-width: 860px) {
+    h1 {
+      min-height: 3.3em;
+    }
     .hero-photo {
       width: 88%;
       height: min(100%, 520px);

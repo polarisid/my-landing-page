@@ -1,6 +1,16 @@
 import styled from "styled-components";
 import { Container, Section, Eyebrow, SectionTitle, Lead } from "../../components/ui";
 import Reveal from "../../components/Reveal";
+import AnimatedTextCycle from "../../components/AnimatedTextCycle";
+
+const CYCLE = [
+  "problema de empresa",
+  "trabalho manual",
+  "gargalo de processo",
+  "atraso na entrega",
+  "perda de vendas",
+  "caos na planilha",
+];
 
 const ICONS: Record<string, JSX.Element> = {
   ai: (
@@ -69,7 +79,8 @@ export default function Services() {
         <Reveal>
           <Eyebrow $tone="live">O que eu faço</Eyebrow>
           <SectionTitle>
-            Tecnologia que resolve <em>problema de empresa</em>.
+            Tecnologia que resolve{" "}
+            <AnimatedTextCycle words={CYCLE} className="hl-amber" />.
           </SectionTitle>
           <Lead>
             Não entrego código solto — entrego solução. Traduzo o problema do seu
