@@ -160,11 +160,11 @@ const Grid = styled.div`
   .featured {
     background: radial-gradient(
         120% 140% at 0% 0%,
-        rgba(255, 176, 32, 0.09),
+        rgba(200, 242, 60, 0.09),
         transparent 55%
       ),
       var(--panel);
-    border-color: rgba(255, 176, 32, 0.28);
+    border-color: rgba(200, 242, 60, 0.28);
   }
   .featured::after {
     content: "IA em destaque";
@@ -176,7 +176,7 @@ const Grid = styled.div`
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--live);
-    border: 1px solid rgba(255, 176, 32, 0.4);
+    border: 1px solid rgba(200, 242, 60, 0.4);
     padding: 4px 10px;
     border-radius: 999px;
   }
@@ -194,7 +194,7 @@ const Grid = styled.div`
   }
   .featured .ico {
     color: var(--live);
-    border-color: rgba(255, 176, 32, 0.35);
+    border-color: rgba(200, 242, 60, 0.35);
   }
   .ico svg {
     width: 24px;

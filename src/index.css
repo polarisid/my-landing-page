@@ -8,18 +8,19 @@
   --line-bright: #333a49;
 
   /* Ink */
-  --text: #edeff3;
+  --text: #eceae4; /* brand off-white */
   --muted: #9aa3b2;
   --faint: #5a6474;
 
-  /* The two worlds */
-  --live: #ffb020; /* energized amber — power / AC / hardware */
-  --live-soft: #ffc661;
-  --signal: #37e0c8; /* teal — data / signal / software */
-  --signal-soft: #7ff0e0;
+  /* Brand accent — lime (dacari) */
+  --live: #c8f23c; /* lime — the brand accent */
+  --live-soft: #d9f76b;
+  --signal: #c8f23c; /* single-accent brand: alias to lime */
+  --signal-soft: #d9f76b;
 
-  --live-glow: rgba(255, 176, 32, 0.16);
-  --signal-glow: rgba(55, 224, 200, 0.16);
+  --live-glow: rgba(200, 242, 60, 0.16);
+  --signal-glow: rgba(200, 242, 60, 0.16);
+  --ink-dark: #10160a; /* dark text on lime fills */
 
   /* Type */
   --font-display: "Space Grotesk", system-ui, sans-serif;
@@ -60,7 +61,7 @@ a {
 
 ::selection {
   background: var(--live);
-  color: #1a1200;
+  color: #10160a;
 }
 
 /* Custom scrollbar */

@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="DACARI">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="dacari">
   <rect width="48" height="48" rx="11" fill="#111318"/>
   <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="10.25" fill="none" stroke="#333A49" stroke-width="1.5"/>
-  <!-- Direct Current symbol: DC = Daniel Carvalho / corrente contínua -->
-  <rect x="9" y="18" width="30" height="5" rx="2.5" fill="#FFB020"/>
-  <rect x="9" y="27" width="7.5" height="5" rx="2.5" fill="#37E0C8"/>
-  <rect x="20.25" y="27" width="7.5" height="5" rx="2.5" fill="#37E0C8"/>
-  <rect x="31.5" y="27" width="7.5" height="5" rx="2.5" fill="#37E0C8"/>
+  <!-- dacari cursor mark: d (bowl+stem) with terminal-cursor top -->
+  <g transform="translate(7.6,7.6) scale(0.35)">
+    <path fill="#ECEAE4" d="M56 42 H32 A24 24 0 0 0 32 90 H56 Z"/>
+    <rect fill="#ECEAE4" x="62" y="28" width="24" height="62"/>
+    <rect fill="#C8F23C" x="62" y="4" width="24" height="18"/>
+  </g>
 </svg>

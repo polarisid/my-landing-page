@@ -245,9 +245,9 @@ const Wrap = styled.section`
       border-color 0.2s, color 0.2s;
   }
   .btn--primary {
-    color: #1a1200;
+    color: #10160a;
     background: var(--live);
-    box-shadow: 0 10px 30px -10px rgba(255, 176, 32, 0.6);
+    box-shadow: 0 10px 30px -10px rgba(200, 242, 60, 0.6);
   }
   .btn--primary:hover {
     transform: translateY(-2px);

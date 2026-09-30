@@ -32,7 +32,7 @@ export default function Nav() {
     <Bar className={scrolled ? "scrolled" : ""}>
       <div className="inner">
         <button className="brand" onClick={() => go("topo")} aria-label="Início">
-          <Logo tagline="sistemas · ia" />
+          <Logo />
         </button>
 
         <nav className="links">
@@ -125,8 +125,8 @@ const Bar = styled.header`
     background: var(--panel);
     border: 1px solid var(--line-bright);
     border-radius: 11px;
-    box-shadow: inset 0 0 0 1px rgba(255, 176, 32, 0.08),
-      0 0 18px rgba(255, 176, 32, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(200, 242, 60, 0.08),
+      0 0 18px rgba(200, 242, 60, 0.12);
   }
   .brandText {
     display: flex;
@@ -190,18 +190,18 @@ const Bar = styled.header`
     height: 8px;
     border-radius: 50%;
     background: var(--signal);
-    box-shadow: 0 0 0 0 rgba(55, 224, 200, 0.6);
+    box-shadow: 0 0 0 0 rgba(200, 242, 60, 0.6);
     animation: pulse 2.4s ease-out infinite;
   }
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(55, 224, 200, 0.55);
+      box-shadow: 0 0 0 0 rgba(200, 242, 60, 0.55);
     }
     70% {
-      box-shadow: 0 0 0 8px rgba(55, 224, 200, 0);
+      box-shadow: 0 0 0 8px rgba(200, 242, 60, 0);
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(55, 224, 200, 0);
+      box-shadow: 0 0 0 0 rgba(200, 242, 60, 0);
     }
   }
 
@@ -210,17 +210,17 @@ const Bar = styled.header`
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.02em;
-    color: #1a1200;
+    color: #10160a;
     background: var(--live);
     padding: 10px 16px;
     border-radius: 10px;
     transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s;
-    box-shadow: 0 6px 20px -6px rgba(255, 176, 32, 0.5);
+    box-shadow: 0 6px 20px -6px rgba(200, 242, 60, 0.5);
   }
   .cta:hover {
     transform: translateY(-1px);
     filter: brightness(1.05);
-    box-shadow: 0 10px 26px -8px rgba(255, 176, 32, 0.6);
+    box-shadow: 0 10px 26px -8px rgba(200, 242, 60, 0.6);
   }
 
   .burger {
