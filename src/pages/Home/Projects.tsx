@@ -59,6 +59,18 @@ const PROJECTS: Project[] = [
     },
   },
   {
+    id: "fenix",
+    name: "Fênix Haus",
+    tagline: "A casa de Aracaju",
+    description:
+      "Site de lançamento da casa noturna LGBTQIA+ de Aracaju (DJ Dubai): hero temático, contagem regressiva, venda de ingresso e reserva de camarote — cheio de marquees e animações.",
+    tags: ["Landing", "Evento", "Animações", "Ingressos"],
+    kind: "Site de evento",
+    tone: "signal",
+    href: "https://www.fenixhaus.com",
+    preview: { url: "https://www.fenixhaus.com/", host: "fenixhaus.com" },
+  },
+  {
     id: "smartos",
     name: "SmartOS",
     tagline: "Ordens de serviço, sem papel",
@@ -87,11 +99,11 @@ export default function Projects() {
         <Reveal>
           <Eyebrow $tone="signal">Projetos</Eyebrow>
           <SectionTitle>
-            Sistemas que eu já <em>coloquei no ar</em>.
+            Coisas que eu já <em>coloquei no ar</em>.
           </SectionTitle>
           <Lead>
-            Soluções reais para problemas de operação — gestão, vendas e
-            rastreamento — construídas de ponta a ponta.
+            De sistemas de gestão a sites de alta produção — soluções
+            construídas de ponta a ponta e no ar de verdade.
           </Lead>
         </Reveal>
 
@@ -163,7 +175,7 @@ export default function Projects() {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: clamp(36px, 6vw, 56px);
 
@@ -371,6 +383,9 @@ const Grid = styled.div`
     border-radius: 7px;
   }
 
+  @media (max-width: 980px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
