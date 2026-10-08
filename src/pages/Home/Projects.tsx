@@ -63,7 +63,7 @@ const PROJECTS: Project[] = [
     name: "Fênix Haus",
     tagline: "A casa de Aracaju",
     description:
-      "Site de lançamento da casa noturna LGBTQIA+ de Aracaju (DJ Dubai): hero temático, contagem regressiva, venda de ingresso e reserva de camarote — cheio de marquees e animações.",
+      "Site de lançamento da casa noturna de Aracaju (DJ Dubai): hero temático, contagem regressiva, venda de ingresso e reserva de camarote — cheio de marquees e animações.",
     tags: ["Landing", "Evento", "Animações", "Ingressos"],
     kind: "Site de evento",
     tone: "signal",
