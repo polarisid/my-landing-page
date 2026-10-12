@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Perfil } from "../../img";
 import { Container } from "../../components/ui";
 import SignalTrace from "../../components/SignalTrace";
 import Typewriter from "../../components/Typewriter";
+import HeroMark from "../../components/HeroMark";
 
 const STATS = [
   { value: "Full Stack", label: "front + back" },
@@ -23,17 +23,15 @@ const PHRASES = [
 export default function Hero() {
   return (
     <Wrap id="topo">
-      <div className="hero-photo" aria-hidden="true">
-        <div
-          className="pic"
-          style={{ backgroundImage: `url(${Perfil})` }}
-        />
-      </div>
+      <HeroMark className="hero-mark" />
 
       <Container>
         <div className="copy">
           <span className="kicker">
-            <i /> Software sob medida · IA para empresas
+            <i />
+            <span>Software sob medida</span>
+            <span className="sep">·</span>
+            <span>IA para empresas</span>
           </span>
 
           <h1 aria-label="Sistemas que resolvem problemas reais">
@@ -91,53 +89,13 @@ const Wrap = styled.section`
   padding-top: clamp(48px, 8vw, 96px);
   overflow: hidden;
 
-  /* Photo woven into the page — a personal-brand watermark that fades out */
-  /* Parent feathers the LEFT edge (into the text); right sits off the edge */
-  .hero-photo {
+  /* Big animated dacari mark on the right of the copy */
+  .hero-mark {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: min(58%, 760px);
-    height: min(100%, 720px);
+    top: clamp(40px, 6vw, 80px);
+    right: max(4vw, calc((100vw - var(--maxw)) / 2 + 20px));
+    width: min(36vw, 440px);
     z-index: 0;
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 6%,
-      #000 46%,
-      #000 100%
-    );
-    mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 6%,
-      #000 46%,
-      #000 100%
-    );
-  }
-  /* Child feathers TOP + BOTTOM — combined it fades on every visible side,
-     as true transparency, so it dissolves into the page with no rectangle */
-  .hero-photo .pic {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: 54% 28%;
-    filter: brightness(1.12) contrast(1) saturate(0.96);
-    -webkit-mask-image: linear-gradient(
-      180deg,
-      transparent 0%,
-      #000 15%,
-      #000 72%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      180deg,
-      transparent 0%,
-      #000 15%,
-      #000 72%,
-      transparent 100%
-    );
   }
   .copy {
     position: relative;
@@ -159,6 +117,15 @@ const Wrap = styled.section`
     border-radius: 999px;
     background: rgba(12, 14, 19, 0.55);
     backdrop-filter: blur(4px);
+  }
+  .kicker {
+    white-space: nowrap;
+  }
+  .kicker i {
+    flex-shrink: 0;
+  }
+  .kicker .sep {
+    color: var(--live);
   }
   .kicker i {
     width: 8px;
@@ -312,51 +279,12 @@ const Wrap = styled.section`
     h1 {
       min-height: 3.3em;
     }
-    .hero-photo {
-      width: 88%;
-      height: min(100%, 520px);
-      -webkit-mask-image: linear-gradient(
-        90deg,
-        transparent 0%,
-        #000 40%,
-        #000 100%
-      );
-      mask-image: linear-gradient(
-        90deg,
-        transparent 0%,
-        #000 40%,
-        #000 100%
-      );
-    }
-    .hero-photo .pic {
-      background-position: 60% 20%;
-      filter: brightness(0.92) contrast(1) saturate(0.98);
-      -webkit-mask-image: linear-gradient(
-        180deg,
-        transparent 0%,
-        #000 12%,
-        #000 62%,
-        transparent 100%
-      );
-      mask-image: linear-gradient(
-        180deg,
-        transparent 0%,
-        #000 12%,
-        #000 62%,
-        transparent 100%
-      );
-    }
-    /* Darken toward the text so the copy stays legible over the photo */
-    .hero-photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(10, 11, 15, 0.28) 0%,
-        rgba(10, 11, 15, 0.5) 52%,
-        rgba(10, 11, 15, 0.72) 100%
-      );
+    /* On narrow screens the mark becomes a faint watermark behind the copy */
+    .hero-mark {
+      top: 24px;
+      right: -12%;
+      width: 78%;
+      opacity: 0.12;
       pointer-events: none;
     }
     .stats {
@@ -371,6 +299,12 @@ const Wrap = styled.section`
     }
   }
   @media (max-width: 440px) {
+    .kicker {
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      gap: 7px;
+      padding: 7px 12px;
+    }
     .stats {
       grid-template-columns: 1fr;
     }

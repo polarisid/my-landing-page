@@ -19,14 +19,17 @@ export default function Preloader() {
       seen = sessionStorage.getItem("dacari_splash") === "1";
     } catch (e) {}
     if (reduce || seen) return;
-    try {
-      sessionStorage.setItem("dacari_splash", "1");
-    } catch (e) {}
 
     setShow(true);
     document.body.style.overflow = "hidden";
     const t1 = setTimeout(() => setHide(true), 1150);
     const t2 = setTimeout(() => {
+      // Mark as seen only once it actually finished — StrictMode's double
+      // effect run would otherwise flag it on the first pass and leave the
+      // overlay stuck on screen.
+      try {
+        sessionStorage.setItem("dacari_splash", "1");
+      } catch (e) {}
       setShow(false);
       document.body.style.overflow = "";
     }, 1650);

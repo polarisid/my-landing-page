@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Logo from "../../components/Logo";
 
@@ -15,13 +15,45 @@ const WHATSAPP = "https://wa.me/5598987132829";
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const progressRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? window.scrollY / max : 0;
+      progressRef.current?.style.setProperty("transform", `scaleX(${p})`);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Scrollspy: highlight the link of the section crossing the viewport middle
+  useEffect(() => {
+    const sections = LINKS.map((l) => document.getElementById(l.id)).filter(
+      Boolean
+    ) as HTMLElement[];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  // Close on Escape
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   const go = (id: string) => {
     setOpen(false);
@@ -29,7 +61,7 @@ export default function Nav() {
   };
 
   return (
-    <Bar className={scrolled ? "scrolled" : ""}>
+    <Bar className={scrolled || open ? "scrolled" : ""}>
       <div className="inner">
         <button className="brand" onClick={() => go("topo")} aria-label="Início">
           <Logo />
@@ -37,7 +69,12 @@ export default function Nav() {
 
         <nav className="links">
           {LINKS.map((l) => (
-            <button key={l.id} onClick={() => go(l.id)}>
+            <button
+              key={l.id}
+              onClick={() => go(l.id)}
+              className={active === l.id ? "on" : ""}
+              aria-current={active === l.id ? "true" : undefined}
+            >
               {l.label}
             </button>
           ))}
@@ -59,6 +96,7 @@ export default function Nav() {
             className="burger"
             aria-label="Menu"
             aria-expanded={open}
+            aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
           >
             <span className={open ? "x" : ""} />
@@ -66,18 +104,42 @@ export default function Nav() {
         </div>
       </div>
 
-      {open && (
-        <div className="drawer">
-          {LINKS.map((l) => (
-            <button key={l.id} onClick={() => go(l.id)}>
+      <span className="progress" aria-hidden="true">
+        <i ref={progressRef} />
+      </span>
+
+      {/* Always mounted so it can animate both ways; hidden from AT when closed */}
+      <div
+        id="mobile-menu"
+        className={`drawer${open ? " open" : ""}`}
+        aria-hidden={!open}
+      >
+        <div className="drawer-inner">
+          {LINKS.map((l, i) => (
+            <button
+              key={l.id}
+              onClick={() => go(l.id)}
+              tabIndex={open ? 0 : -1}
+              className={active === l.id ? "on" : ""}
+              style={{ transitionDelay: open ? `${60 + i * 45}ms` : "0ms" }}
+            >
+              <span className="n">{String(i + 1).padStart(2, "0")}</span>
               {l.label}
             </button>
           ))}
-          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+          <a
+            href={WHATSAPP}
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={open ? 0 : -1}
+            style={{
+              transitionDelay: open ? `${60 + LINKS.length * 45}ms` : "0ms",
+            }}
+          >
             Vamos conversar →
           </a>
         </div>
-      )}
+      </div>
     </Bar>
   );
 }
@@ -169,6 +231,26 @@ const Bar = styled.header`
     color: var(--text);
     background: rgba(255, 255, 255, 0.04);
   }
+  .links button.on {
+    color: var(--live);
+    background: rgba(200, 242, 60, 0.08);
+  }
+
+  .progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    pointer-events: none;
+  }
+  .progress i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--live));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
 
   .right {
     display: flex;
@@ -244,7 +326,8 @@ const Bar = styled.header`
     height: 2px;
     background: var(--text);
     transform: translate(-50%, -50%);
-    transition: transform 0.25s ease, opacity 0.2s;
+    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1),
+      background 0.2s, opacity 0.2s;
   }
   .burger span::before {
     transform: translate(-50%, -7px);
@@ -262,17 +345,43 @@ const Bar = styled.header`
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 
+  /* Mobile menu: drops down over the page; grid 0fr→1fr animates height */
   .drawer {
     display: none;
-    flex-direction: column;
-    gap: 4px;
-    padding: 8px clamp(20px, 5vw, 40px) 20px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    grid-template-rows: 0fr;
     background: rgba(10, 11, 15, 0.94);
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid transparent;
+    visibility: hidden;
+    transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s, visibility 0s linear 0.4s;
+  }
+  .drawer.open {
+    grid-template-rows: 1fr;
+    border-bottom-color: var(--line);
+    visibility: visible;
+    transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s, visibility 0s;
+  }
+  .drawer-inner {
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 clamp(20px, 5vw, 40px);
+  }
+  .drawer.open .drawer-inner {
+    padding-bottom: 20px;
   }
   .drawer button,
   .drawer a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     text-align: left;
     background: none;
     border: 0;
@@ -280,17 +389,47 @@ const Bar = styled.header`
     color: var(--text);
     font-family: var(--font-mono);
     font-size: 0.95rem;
-    padding: 12px 8px;
+    padding: 14px 8px;
     border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s;
+  }
+  .drawer.open button,
+  .drawer.open a {
+    opacity: 1;
+    transform: none;
+  }
+  .drawer button .n {
+    font-size: 0.7rem;
+    color: var(--faint);
+  }
+  .drawer button.on {
+    color: var(--live);
   }
   .drawer a {
     color: var(--live);
+    border-bottom: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drawer,
+    .drawer.open,
+    .drawer button,
+    .drawer a {
+      transition: none;
+    }
   }
 
   @media (max-width: 900px) {
     .links,
     .status {
       display: none;
+    }
+    /* links carried the auto margin; without them push the actions right */
+    .right {
+      margin-left: auto;
     }
   }
   @media (max-width: 620px) {
@@ -301,7 +440,7 @@ const Bar = styled.header`
       display: block;
     }
     .drawer {
-      display: flex;
+      display: grid;
     }
   }
 `;
