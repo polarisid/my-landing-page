@@ -71,6 +71,21 @@ const PROJECTS: Project[] = [
     preview: { url: "https://www.fenixhaus.com/", host: "fenixhaus.com" },
   },
   {
+    id: "tracking",
+    name: "Tracking Online",
+    tagline: "A operação sob controle",
+    description:
+      "Sistema sob medida para um Smartcenter Samsung: acompanha indicadores em tempo real, gera relatórios e aponta falhas operacionais — integrado ao sistema de rotas e ao sistema interno.",
+    tags: ["Tempo real", "Dashboards", "Relatórios", "Integrações"],
+    kind: "Painel operacional",
+    tone: "live",
+    href: "https://tracking.dacari.com.br",
+    preview: {
+      url: "https://tracking.dacari.com.br/",
+      host: "tracking.dacari.com.br",
+    },
+  },
+  {
     id: "smartos",
     name: "SmartOS",
     tagline: "Ordens de serviço, sem papel",
@@ -79,16 +94,6 @@ const PROJECTS: Project[] = [
     tags: ["React", "Node.js", "PostgreSQL"],
     kind: "Sistema de gestão",
     tone: "signal",
-  },
-  {
-    id: "tracking",
-    name: "Tracking Online",
-    tagline: "Onde está, agora",
-    description:
-      "Rastreamento em tempo real: acompanhe status e localização com atualização ao vivo e histórico de eventos, acessível de qualquer dispositivo.",
-    tags: ["React", "API", "Tempo real"],
-    kind: "Rastreamento",
-    tone: "live",
   },
 ];
 
